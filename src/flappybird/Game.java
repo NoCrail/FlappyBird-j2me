@@ -30,6 +30,8 @@ public interface Game {
         public void setColor(int r, int g, int b, int a);
 
         public void drawRect(int x, int y, int w, int h);
+        
+        public void drawImage(Object imageData, int x_src, int y_src, int width, int height, int transform, int x_dest, int y_dest);
 
         public void drawText(int x, int y, String text);
 

@@ -4,6 +4,9 @@ package flappybird;
 
 
 import java.util.Random;
+import javax.microedition.lcdui.Image;
+import javax.microedition.lcdui.game.Sprite;
+
 
 public class FlappyBird implements Game {
 
@@ -29,16 +32,23 @@ public class FlappyBird implements Game {
     private int score = 0;
     private int maxScore = 0;
 
-    private int textScale = 2;
+    private int textScale = 4;
 
     private FontRenderer fontRenderer = new FontRenderer(textScale);
 
     private Point[] clouds = new Point[4];
     
+    Image cloudImg;
+    
     
     Random r = new Random();
 
     FlappyBird() {
+        try{
+            cloudImg = Image.createImage(getClass().getResourceAsStream(new StringBuffer().append("/images/").append("clouds.png").toString()));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
         
         for (int i = 3; i >= 0; i--) {
             clouds[i] = new Point(
@@ -67,13 +77,18 @@ public class FlappyBird implements Game {
         int w = canvas.getWidth();
         int h = canvas.getHeight();
 
+        //Drawing background
         canvas.setColor(0, 200, 255, 210);
-        canvas.drawRect(0, 0, 288, 160);
+        canvas.drawRect(0, 0, w, h);
 
+        
+        
         canvas.setColor(255, 255, 255, 50);
         for (int i = 0; i < 4; i++) {
-            canvas.drawRect((int)(clouds[i].x), (int)(clouds[i].y), (int) (pipeInterval * 1.5), 30);
-            canvas.drawRect((int)(clouds[i].x) + 5, (int)(clouds[i].y) + 5, (int) (pipeInterval * 1.5 - 10), 20);
+//            canvas.drawRect((int)(clouds[i].x), (int)(clouds[i].y), (int) (pipeInterval * 1.5), 30);
+//            canvas.drawRect((int)(clouds[i].x) + 5, (int)(clouds[i].y) + 5, (int) (pipeInterval * 1.5 - 10), 20);
+            canvas.drawImage(cloudImg, 0, 0, (int) (pipeInterval * 1.5), 30, Sprite.TRANS_NONE, (int)(clouds[i].x), (int)(clouds[i].y));
+            canvas.drawImage(cloudImg, 0, 0, (int) (pipeInterval * 1.5) - 10, 20, Sprite.TRANS_NONE, (int)(clouds[i].x)+5, (int)(clouds[i].y)+5);
         }
 
         if (started || gameOver) {

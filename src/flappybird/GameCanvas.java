@@ -9,6 +9,8 @@ package flappybird;
 
 import javax.microedition.lcdui.Canvas;
 import javax.microedition.lcdui.Graphics;
+import javax.microedition.lcdui.Image;
+import javax.microedition.lcdui.game.Sprite;
 
 
 /**
@@ -42,6 +44,10 @@ public class GameCanvas implements Game.Canvas {
 
     public void drawRect(int x, int y, int w, int h) {
         this.g.fillRect(x, y, w, h);
+    }
+    
+    public void drawImage(Object imageData, int x_src, int y_src, int width, int height, int transform, int x_dest, int y_dest) {
+        this.g.drawRegion((Image)imageData, x_src, y_src, width, height, transform, x_dest, y_dest, TOP|LEFT);
     }
 
     public void drawText(int x, int y, String text) {
