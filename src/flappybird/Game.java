@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+package flappybird;
+
 public interface Game {
 
     public void onDraw(Canvas canvas);
@@ -12,7 +14,6 @@ public interface Game {
 
     public interface Engine {
 
-        public void isClick(Function1<Integer, Void> callback);
 
         public void soundJump();
 

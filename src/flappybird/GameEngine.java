@@ -18,9 +18,6 @@ public class GameEngine implements Game.Engine{
         this.c = c;
     }
 
-    public boolean isClick() {
-        return true;
-    }
 
     public void soundJump() {
     }

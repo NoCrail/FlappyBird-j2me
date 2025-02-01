@@ -25,15 +25,25 @@ public class FlappyBirdGame extends Canvas implements Runnable {
     protected void paint(Graphics g) {
         fb.onDraw(new GameCanvas(g, this));
     }
+    
+    
+       public void keyPressed (int keyCode) {
+           fb.keyPressed(keyCode);
+    }
 
     public void run() {
         while(true){
-            if (fb.engine == null){
-                e = new GameEngine(this);
-                fb.engine = e;
+            try{
+                synchronized (fb){
+                    fb.onTick();
+                    repaint ();
+                    fb.wait (18);
+                }
+            
+                } catch (Exception ie) {
+                ie.printStackTrace();
             }
-            fb.onTick();
-            repaint ();
+                
         }
         
     }
