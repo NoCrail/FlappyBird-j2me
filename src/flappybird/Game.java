@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package flappybird;
 
 public interface Game {
@@ -12,8 +11,9 @@ public interface Game {
 
     public void onTick();
 
-    public interface Engine {
+    public void keyPressed(int keyCode);
 
+    public interface SoundEngine {
 
         public void soundJump();
 
@@ -21,6 +21,7 @@ public interface Game {
     }
 
     public interface Canvas {
+
         /**
          * @param r - Red component [0..255]
          * @param g - Green component [0..255]
@@ -30,7 +31,7 @@ public interface Game {
         public void setColor(int r, int g, int b, int a);
 
         public void drawRect(int x, int y, int w, int h);
-        
+
         public void drawImage(Object imageData, int x_src, int y_src, int width, int height, int transform, int x_dest, int y_dest);
 
         public void drawText(int x, int y, String text);

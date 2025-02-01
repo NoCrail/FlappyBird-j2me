@@ -3,22 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package flappybird.impl;
 
-package flappybird;
-
-
+import flappybird.Game;
 import javax.microedition.lcdui.Canvas;
+import javax.microedition.lcdui.Font;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.game.Sprite;
-
 
 /**
  *
  * @author nocrail
  */
-public class GameCanvas implements Game.Canvas {
-    
+public class CanvasImpl implements Game.Canvas {
+
     public static final int SOLID = 0;
     public static final int DOTTED = 1;
     public static final int HCENTER = 1;
@@ -28,12 +27,11 @@ public class GameCanvas implements Game.Canvas {
     public static final int LEFT = 4;
     public static final int BASELINE = 64;
     public static final int RIGHT = 8;
-    
-    
+
     private Graphics g;
     private Canvas c;
-    
-    public GameCanvas(Graphics g, Canvas c){
+
+    public CanvasImpl(Graphics g, Canvas c) {
         this.g = g;
         this.c = c;
     }
@@ -45,13 +43,13 @@ public class GameCanvas implements Game.Canvas {
     public void drawRect(int x, int y, int w, int h) {
         this.g.fillRect(x, y, w, h);
     }
-    
+
     public void drawImage(Object imageData, int x_src, int y_src, int width, int height, int transform, int x_dest, int y_dest) {
-        this.g.drawRegion((Image)imageData, x_src, y_src, width, height, transform, x_dest, y_dest, TOP|LEFT);
+        this.g.drawRegion((Image) imageData, x_src, y_src, width, height, transform, x_dest, y_dest, TOP | LEFT);
     }
 
     public void drawText(int x, int y, String text) {
-        this.g.drawString(text, x, y, TOP|LEFT);
+        this.g.drawString(text, x, y, TOP | LEFT);
     }
 
     public int getWidth() {
@@ -61,5 +59,5 @@ public class GameCanvas implements Game.Canvas {
     public int getHeight() {
         return c.getHeight();
     }
-    
+
 }

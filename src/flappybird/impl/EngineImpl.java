@@ -3,26 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package flappybird.impl;
 
-package flappybird;
+import flappybird.Game;
 
 /**
  *
  * @author nocrail
  */
-public class GameEngine implements Game.Engine{
-    
+public class EngineImpl implements Game.SoundEngine {
+
     private javax.microedition.lcdui.Canvas c;
-    
-    public GameEngine(javax.microedition.lcdui.Canvas c){
+
+    public EngineImpl(javax.microedition.lcdui.Canvas c) {
         this.c = c;
     }
-
 
     public void soundJump() {
     }
 
     public void soundGameOver() {
     }
-    
+
 }

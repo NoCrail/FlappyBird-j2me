@@ -1,12 +1,9 @@
-
-
 package flappybird;
 
-
+import flappybird.internal.FontRenderer;
 import java.util.Random;
 import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.game.Sprite;
-
 
 public class FlappyBird implements Game {
 
@@ -37,34 +34,33 @@ public class FlappyBird implements Game {
     private FontRenderer fontRenderer = new FontRenderer(textScale);
 
     private Point[] clouds = new Point[4];
-    
+
     Image cloudImg;
-    
-    
+
     Random r = new Random();
 
     FlappyBird() {
-        try{
+        try {
             cloudImg = Image.createImage(getClass().getResourceAsStream(new StringBuffer().append("/images/").append("clouds.png").toString()));
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         for (int i = 3; i >= 0; i--) {
             clouds[i] = new Point(
                     pipeInterval * (i + 1) + r.nextInt(30),
                     r.nextInt(130)
             );
         }
-        
+
         restart();
     }
 
-    public void keyPressed (int keyCode) {
+    public void keyPressed(int keyCode) {
         horizontalSpeedTick = 1;
-        if (gameOver)
+        if (gameOver) {
             restart();
-        else {
+        } else {
             if (!started) {
                 started = true;
                 restart();
@@ -81,14 +77,12 @@ public class FlappyBird implements Game {
         canvas.setColor(0, 200, 255, 210);
         canvas.drawRect(0, 0, w, h);
 
-        
-        
         canvas.setColor(255, 255, 255, 50);
         for (int i = 0; i < 4; i++) {
 //            canvas.drawRect((int)(clouds[i].x), (int)(clouds[i].y), (int) (pipeInterval * 1.5), 30);
 //            canvas.drawRect((int)(clouds[i].x) + 5, (int)(clouds[i].y) + 5, (int) (pipeInterval * 1.5 - 10), 20);
-            canvas.drawImage(cloudImg, 0, 0, (int) (pipeInterval * 1.5), 30, Sprite.TRANS_NONE, (int)(clouds[i].x), (int)(clouds[i].y));
-            canvas.drawImage(cloudImg, 0, 0, (int) (pipeInterval * 1.5) - 10, 20, Sprite.TRANS_NONE, (int)(clouds[i].x)+5, (int)(clouds[i].y)+5);
+            canvas.drawImage(cloudImg, 0, 0, (int) (pipeInterval * 1.5), 30, Sprite.TRANS_NONE, (int) (clouds[i].x), (int) (clouds[i].y));
+            canvas.drawImage(cloudImg, 0, 0, (int) (pipeInterval * 1.5) - 10, 20, Sprite.TRANS_NONE, (int) (clouds[i].x) + 5, (int) (clouds[i].y) + 5);
         }
 
         if (started || gameOver) {
@@ -116,7 +110,6 @@ public class FlappyBird implements Game {
         canvas.drawRect(0, 155, 288, 2);
     }
 
-
     public void onTick() {
         if (horizontalSpeedTick > 5) {
             horizontalSpeedTick = 0;
@@ -131,10 +124,8 @@ public class FlappyBird implements Game {
             horizontalSpeed = -horizontalSpeedUp / 5;
         }
 
-
-
         for (int i = 3; i >= 0; i--) {
-            clouds[i].x = clouds[i].x - (float)verticalSpeed / 2;
+            clouds[i].x = clouds[i].x - (float) verticalSpeed / 2;
             if (clouds[i].x < -pipeInterval * 1.5) {
                 clouds[i].x = 288 + r.nextInt(50);
                 clouds[i].y = r.nextInt(100);
@@ -145,9 +136,9 @@ public class FlappyBird implements Game {
             for (int i = 0; i < 4; i++) {
 
                 pos[i].x = pos[i].x - verticalSpeed;
-                if (((posX + 6 > pos[i].x - 13 && posX + 6 < pos[i].x + 13) || (posX - 6 > pos[i].x - 13 && posX - 6 < pos[i].x + 13)) &&
-                        ((posY + 4 > 0 && posY + 4 < pos[i].height.top + 8) || (posY - 4 < 160 && posY - 4 > 160 - pos[i].height.bottom - 16)) //160 TODO низ экрана
-                ) {
+                if (((posX + 6 > pos[i].x - 13 && posX + 6 < pos[i].x + 13) || (posX - 6 > pos[i].x - 13 && posX - 6 < pos[i].x + 13))
+                        && ((posY + 4 > 0 && posY + 4 < pos[i].height.top + 8) || (posY - 4 < 160 && posY - 4 > 160 - pos[i].height.bottom - 16)) //160 TODO низ экрана
+                        ) {
                     gameOver = true;
                 }
 
@@ -189,7 +180,7 @@ public class FlappyBird implements Game {
         int x = 144 - textScale * 4 * (ss.length() - 1) - 3 * (ss.length() - 1);
         int y = 20;
         int i = 0;
-        for (int j = 0; j<ss.length(); j++){
+        for (int j = 0; j < ss.length(); j++) {
             char c = ss.charAt(j);
             int cx = x + textScale * 4 * i + 3 * i;
             switch (c) {
@@ -303,6 +294,7 @@ public class FlappyBird implements Game {
     }
 
     static class Height {
+
         int top;
         int bottom;
 
@@ -313,6 +305,7 @@ public class FlappyBird implements Game {
     }
 
     static class Pos {
+
         int x;
         Height height;
 
@@ -323,6 +316,7 @@ public class FlappyBird implements Game {
     }
 
     static class Point {
+
         float x;
         float y;
 
