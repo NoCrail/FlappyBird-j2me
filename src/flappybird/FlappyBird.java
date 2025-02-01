@@ -11,39 +11,39 @@ import java.util.Random;
 
 public class FlappyBird implements Game {
 
-    int tick = 0;
-    int horizontalSpeedTick = 0;
+    private int tick = 0;
+    private int horizontalSpeedTick = 0;
 
-    int verticalSpeed = 1;
-    int horizontalSpeed = 0;
-    int horizontalSpeedUp = 20;
-    int horizontalSpeedDown = 1;
-    int posX = 72;
-    int posY = 80;
+    private int verticalSpeed = 1;
+    private int horizontalSpeed = 0;
+    private int horizontalSpeedUp = 20;
+    private int horizontalSpeedDown = 1;
+    private int posX = 72;
+    private int posY = 80;
 
-    int window = 45;
+    private int window = 45;
 
-    int pipeInterval = 96;
+    private int pipeInterval = 96;
 
-    Pos[] pos = new Pos[4];
-    boolean pressed = false;
+    private Pos[] pos = new Pos[4];
+    private boolean pressed = false;
 
-    boolean started = false;
+    private boolean started = false;
 
-    boolean gameOver = false;
+    private boolean gameOver = false;
 
-    int score = 0;
-    int maxScore = 0;
+    private int score = 0;
+    private int maxScore = 0;
 
-    int textScale = 2;
+    private int textScale = 2;
 
-    FontRenderer fontRenderer = new FontRenderer(textScale);
+    private FontRenderer fontRenderer = new FontRenderer(textScale);
 
-    Point[] clouds = new Point[4];
+    private Point[] clouds = new Point[4];
 
-    Game.Engine engine = null;
+    Game.Engine engine;
 
-    FlappyBird() {
+    FlappyBird(Game.Engine engine) {
         Random r = new Random();
         for (int i = 3; i != 0; i--) {
             clouds[i] = new Point(
@@ -51,7 +51,22 @@ public class FlappyBird implements Game {
                     r.nextInt(130)
             );
         }
+        engine.isClick(this::onKeyClicked);
         restart();
+    }
+
+    private Void onKeyClicked(Integer key) {
+        tick = tick + 1;
+        pressed = true;
+        if (gameOver)
+            restart();
+        else {
+            if (!started) {
+                started = true;
+                restart();
+            }
+        }
+        return null;
     }
 
     public void onDraw(Game.Canvas canvas) {

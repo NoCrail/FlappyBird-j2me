@@ -4,38 +4,36 @@
  * and open the template in the editor.
  */
 
-package flappybird;
-
 public interface Game {
 
-    void onDraw(Canvas canvas);
+    public void onDraw(Canvas canvas);
 
-    void onTick();
+    public void onTick();
 
     public interface Engine {
 
-        boolean isClick();
+        public void isClick(Function1<Integer, Void> callback);
 
-        void soundJump();
+        public void soundJump();
 
-        void soundGameOver();
+        public void soundGameOver();
     }
 
-    interface Canvas {
+    public interface Canvas {
         /**
          * @param r - Red component [0..255]
          * @param g - Green component [0..255]
          * @param b - Blue component [0..255]
          * @param a - Alpha component [0..255]
          */
-        void setColor(int r, int g, int b, int a);
+        public void setColor(int r, int g, int b, int a);
 
-        void drawRect(int x, int y, int w, int h);
+        public void drawRect(int x, int y, int w, int h);
 
-        void drawText(int x, int y, String text);
+        public void drawText(int x, int y, String text);
 
-        int getWidth();
+        public int getWidth();
 
-        int getHeight();
+        public int getHeight();
     }
 }
