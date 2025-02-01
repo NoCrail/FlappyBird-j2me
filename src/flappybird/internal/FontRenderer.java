@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package flappybird.internal;
 
-package flappybird;
+import flappybird.Game;
 
 public class FontRenderer {
 
-    final int textScale;
+    private final int textScale;
 
-    FontRenderer(int textScale) {
+    public FontRenderer(int textScale) {
         this.textScale = textScale;
     }
 
@@ -20,7 +21,7 @@ public class FontRenderer {
         canvas.setColor(255, 255, 255, 255);
     }
 
-    void draw0(Game.Canvas canvas, int x, int y) {
+    public void draw0(Game.Canvas canvas, int x, int y) {
         drawBorder(canvas, x, y);
         canvas.drawRect(x, y, textScale << 2, textScale);
         canvas.drawRect(x, y, textScale, textScale * 5);
@@ -28,12 +29,12 @@ public class FontRenderer {
         canvas.drawRect(x, y + (textScale << 2), textScale << 2, textScale);
     }
 
-    void draw1(Game.Canvas canvas, int x, int y) {
+    public void draw1(Game.Canvas canvas, int x, int y) {
         drawBorder(canvas, x, y);
         canvas.drawRect(x + textScale * 3, y, textScale, textScale * 5);
     }
 
-    void draw2(Game.Canvas canvas, int x, int y) {
+    public void draw2(Game.Canvas canvas, int x, int y) {
         drawBorder(canvas, x, y);
         canvas.drawRect(x, y, textScale << 2, textScale);
         canvas.drawRect(x + textScale * 3, y, textScale, textScale * 3);
@@ -42,7 +43,7 @@ public class FontRenderer {
         canvas.drawRect(x, y + (textScale << 2), textScale << 2, textScale);
     }
 
-    void draw3(Game.Canvas canvas, int x, int y) {
+    public void draw3(Game.Canvas canvas, int x, int y) {
         drawBorder(canvas, x, y);
         canvas.drawRect(x, y, textScale << 2, textScale);
         canvas.drawRect(x + textScale * 3, y, textScale, textScale * 5);
@@ -50,14 +51,14 @@ public class FontRenderer {
         canvas.drawRect(x, y + (textScale << 2), textScale << 2, textScale);
     }
 
-    void draw4(Game.Canvas canvas, int x, int y) {
+    public void draw4(Game.Canvas canvas, int x, int y) {
         drawBorder(canvas, x, y);
         canvas.drawRect(x, y, textScale, textScale * 3);
         canvas.drawRect(x + textScale * 3, y, textScale, textScale * 5);
         canvas.drawRect(x, y + (textScale << 1), textScale << 2, textScale);
     }
 
-    void draw5(Game.Canvas canvas, int x, int y) {
+    public void draw5(Game.Canvas canvas, int x, int y) {
         drawBorder(canvas, x, y);
         canvas.drawRect(x, y, textScale << 2, textScale);
         canvas.drawRect(x, y, textScale, textScale * 3);
@@ -66,7 +67,7 @@ public class FontRenderer {
         canvas.drawRect(x, y + (textScale << 2), textScale << 2, textScale);
     }
 
-    void draw6(Game.Canvas canvas, int x, int y) {
+    public void draw6(Game.Canvas canvas, int x, int y) {
         drawBorder(canvas, x, y);
         canvas.drawRect(x, y, textScale << 2, textScale);
         canvas.drawRect(x, y, textScale, textScale * 5);
@@ -75,13 +76,13 @@ public class FontRenderer {
         canvas.drawRect(x, y + (textScale << 2), textScale << 2, textScale);
     }
 
-    void draw7(Game.Canvas canvas, int x, int y) {
+    public void draw7(Game.Canvas canvas, int x, int y) {
         drawBorder(canvas, x, y);
         canvas.drawRect(x + textScale * 3, y, textScale, textScale * 5);
         canvas.drawRect(x, y, textScale << 2, textScale);
     }
 
-    void draw8(Game.Canvas canvas, int x, int y) {
+    public void draw8(Game.Canvas canvas, int x, int y) {
         drawBorder(canvas, x, y);
         canvas.drawRect(x, y, textScale << 2, textScale);
         canvas.drawRect(x, y, textScale, textScale * 5);
@@ -90,7 +91,7 @@ public class FontRenderer {
         canvas.drawRect(x, y + (textScale << 2), textScale << 2, textScale);
     }
 
-    void draw9(Game.Canvas canvas, int x, int y) {
+    public void draw9(Game.Canvas canvas, int x, int y) {
         drawBorder(canvas, x, y);
         canvas.drawRect(x, y, textScale << 2, textScale);
         canvas.drawRect(x, y, textScale, textScale * 3);
