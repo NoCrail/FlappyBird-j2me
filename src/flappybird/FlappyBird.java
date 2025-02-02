@@ -1,6 +1,7 @@
 package flappybird;
 
-import flappybird.internal.FontRenderer;
+import game.Game;
+import game.internal.FontRenderer;
 import java.util.Random;
 import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.game.Sprite;
@@ -39,7 +40,7 @@ public class FlappyBird implements Game {
 
     Random r = new Random();
 
-    FlappyBird() {
+    public FlappyBird() {
         try {
             cloudImg = Image.createImage(getClass().getResourceAsStream(new StringBuffer().append("/images/").append("clouds.png").toString()));
         } catch (Exception e) {
